@@ -54,7 +54,7 @@ int main() {
   LUKS_HEADER header;
   LUKS_DECRYPTION_KEY generatedKey;
 
-  FILE *file = fopen("test.bin", "rb");
+  FILE *file = fopen("luks-header.bin", "rb");
   if (file == NULL) {
     perror("Error opening file");
     return 1; 
@@ -65,8 +65,8 @@ int main() {
 
   if (elements_read != 1) {
     perror("Error reading file");
-    fclose(file); // Close the file before exiting
-    return 2; // Return an error code
+    fclose(file); 
+    return 2;
   }
 
   generatedKey = CalculateDecryptionKey(header);
